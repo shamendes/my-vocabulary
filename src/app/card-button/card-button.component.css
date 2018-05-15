@@ -1,0 +1,59 @@
+.cardButton{
+    display: block;
+    padding:10px;
+    border: 1px solid black;
+    border-radius: 5px;
+    cursor: pointer;   
+}
+
+
+.cardButton--content{
+    background-color: cornflowerblue;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: white;
+    font-size: 15pt;  
+    text-align: center;
+ }
+
+ .cardButton--content:hover{
+    background-color:royalblue;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color:white;
+    font-size: 18pt;
+    text-align: center;
+ }
+
+ .cardButton--action{
+    background-color:dodgerblue;
+    text-align: center;
+ }
+
+ .cardButton--action:hover{
+    background-color:royalblue;
+    text-align: center;
+ }
+
+ .textBox
+ {
+    background: transparent;
+    width: 80%;
+    border: none;
+    border-bottom: 2px solid lightsteelblue;
+    font-size: 18pt;
+    color: white;
+    text-align: center;
+ }
+
+
+ ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: lightsteelblue;
+    opacity: 1; /* Firefox */
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: lightsteelblue;
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+    color: lightsteelblue;
+}

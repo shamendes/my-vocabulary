@@ -1,0 +1,4 @@
+<ul>
+    <li *ngFor="let genericAction of genericActions" class="listCardButton listCardButton--vertical"><app-card-button [genericRecord]="genericAction"  [height]="80" [width]="450"></app-card-button></li>
+    <li *ngFor="let language of languages" class="listCardButton listCardButton--vertical"><app-card-button [genericRecord]="language.asGenericRecord()"  [height]="80" [width]="450"></app-card-button></li>
+</ul>
