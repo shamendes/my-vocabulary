@@ -12,26 +12,5 @@ export const LANGUAGES: Language[] = [
         };
 
         return (genericRecord);
-
-    }},
-    {id: 2, name: 'Español', asGenericRecord(): GenericRecord {
-        const genericRecord: GenericRecord = {
-            id: this.id,
-            name: this.name,
-            action: ''
-        };
-
-        return (genericRecord);
-
-    }},
-    {id: 3, name: 'Português', asGenericRecord(): GenericRecord {
-        const genericRecord: GenericRecord = {
-            id: this.id,
-            name: this.name,
-            action: ''
-        };
-
-        return (genericRecord);
-
     }}
 ];

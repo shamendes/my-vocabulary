@@ -1,0 +1,4 @@
+<ul>
+  <li *ngFor="let genericAction of genericActions" class="listCardButton listCardButton--horizontal"><app-card-button [genericRecord]="genericAction"  [height]="80" [width]="400" (onAdd)="add($event)"></app-card-button></li>
+  <li *ngFor="let group of groups" class="listCardButton listCardButton--horizontal"><app-card-button [genericRecord]="group.asGenericRecord()"  [height]="80" [width]="400" (onRemove)="remove($event)" (onUpdate)="update($event)"></app-card-button></li>
+</ul>

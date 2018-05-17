@@ -5,12 +5,14 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { LanguagesComponent } from './languages/languages.component';
 import { CardButtonComponent } from './card-button/card-button.component';
+import { GroupsComponent } from './groups/groups.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LanguagesComponent,
-    CardButtonComponent
+    CardButtonComponent,
+    GroupsComponent
   ],
   imports: [
     BrowserModule,

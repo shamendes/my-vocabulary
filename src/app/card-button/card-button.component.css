@@ -13,6 +13,7 @@
     color: white;
     font-size: 15pt;  
     text-align: center;
+    padding-left: 30px;
  }
 
  .cardButton--content:hover{
@@ -20,17 +21,20 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color:white;
     font-size: 18pt;
-    text-align: center;
+    text-align: center; 
+    padding-left: 30px;
  }
 
  .cardButton--action{
     background-color:dodgerblue;
     text-align: center;
+    padding-left: 30px;
  }
 
  .cardButton--action:hover{
     background-color:royalblue;
     text-align: center;
+    padding-left: 30px;
  }
 
  .textBox
@@ -45,15 +49,17 @@
  }
 
 
- ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
-    color: lightsteelblue;
-    opacity: 1; /* Firefox */
+.imgMoreActionsHidden{ 
+    visibility: hidden;
+    width: 18px;
+    height: 18px;
+    float:right;
 }
 
-:-ms-input-placeholder { /* Internet Explorer 10-11 */
-    color: lightsteelblue;
-}
-
-::-ms-input-placeholder { /* Microsoft Edge */
-    color: lightsteelblue;
+.imgMoreActionsShow{
+    visibility: visible;
+    width: 18px;
+    height: 18px;
+    padding-right: 5px;
+    float:right;
 }
