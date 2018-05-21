@@ -1,7 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import {LANGUAGES} from '../../mock/mock-languages';
 import { GenericRecord } from '../../class/generic-record';
 import { Language } from '../../class/language';
+import { LanguageService} from '../_services/language.service';
 
 @Component({
   selector: 'app-languages',
@@ -12,17 +12,21 @@ export class LanguagesComponent implements OnInit {
 
   @Output() eventSelect = new EventEmitter<Language>();
 
-  // MOC of Languages
-  languages = LANGUAGES;
+  languages: Language[];
 
   // Actions buttons
   genericActions: GenericRecord[] = [
     { id: 1, name: '+', action: 'new'   }
   ];
 
-  constructor() { }
+  constructor(private languageService: LanguageService) { }
 
   ngOnInit() {
+    this.getLanguages();
+  }
+
+  getLanguages() {
+    this.languageService.getLanguages().subscribe(languages => this.languages = languages);
   }
 
   add(genericRecord: GenericRecord) {

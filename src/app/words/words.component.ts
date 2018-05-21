@@ -1,8 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Group } from '../../class/group';
-import { WORDS } from '../../mock/mock-words';
 import { GenericRecord } from '../../class/generic-record';
 import { Word } from '../../class/word';
+import { WordService} from '../_services/word.service';
 
 @Component({
   selector: 'app-words',
@@ -13,19 +13,18 @@ export class WordsComponent implements OnInit {
 
   @Input() group: Group;
 
-  // MOCK of words
-  words = WORDS;
-
+  genericRecords: GenericRecord[];
+  words: Word[];
   selectedWord: Word;
 
-
-  genericRecords: GenericRecord[];
-
-  constructor() {
-    this.resyncGenericRecords();
+  constructor(private wordService: WordService) {
   }
 
   ngOnInit() {
+    this.getWords();
+    if (!this.genericRecords) {
+      this.resyncGenericRecords();
+    }
   }
 
   private resyncGenericRecords() {
@@ -34,6 +33,11 @@ export class WordsComponent implements OnInit {
       this.genericRecords.push(word.asGenericRecord());
    }
   }
+
+  getWords() {
+    this.wordService.getWords().subscribe(words => this.words = words);
+  }
+
 
   select(genericRecord: GenericRecord) {
     let indexWordFound: number;

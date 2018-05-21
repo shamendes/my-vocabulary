@@ -1,8 +1,8 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
-import { GROUPS } from '../../mock/mock-groups';
 import { GenericRecord } from '../../class/generic-record';
 import { Group } from '../../class/group';
 import { Language } from '../../class/language';
+import { GroupService} from '../_services/group.service';
 
 @Component({
   selector: 'app-groups',
@@ -14,19 +14,22 @@ export class GroupsComponent implements OnInit {
   @Input() language: Language;
   @Output() eventSelect = new EventEmitter<Group>();
 
-  // MOCK of groups
-  groups = GROUPS;
+  groups: Group[];
 
   // Actions buttons
   genericActions: GenericRecord[] = [
     { id: 1, name: '+', action: 'new'   }
   ];
 
-  constructor() { }
+  constructor(private groupService: GroupService) { }
 
   ngOnInit() {
+    this.getGroups();
   }
 
+  getGroups() {
+    this.groupService.getGroups().subscribe(groups => this.groups = groups);
+  }
 
   add(genericRecord: GenericRecord) {
     const newGroup = new Group;
