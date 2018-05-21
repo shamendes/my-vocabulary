@@ -1,0 +1,10 @@
+<table>  
+  <tr *ngFor="let letter of letters"> 
+    <td>
+      <label>{{letter | uppercase}}</label>
+      <ul *ngIf="getRecordsByLetter(letter).length > 0">
+        <li *ngFor="let genericRecord of getRecordsByLetter(letter)" (click)="selectItem(genericRecord)">{{genericRecord.name}}</li>
+      </ul>
+    </td>
+  </tr>  
+</table>

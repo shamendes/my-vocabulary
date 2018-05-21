@@ -1,11 +1,16 @@
-import { Language } from './language';
+import { Group } from './group';
 import { GenericRecord } from './generic-record';
 
-export class Group {
-
-    language: Language;
+export class Word {
     id: number;
     name: string;
+    meaning: string;
+    groups: Group[];
+
+    constructor() {
+        this.groups = [];
+    }
+
 
     asGenericRecord(): GenericRecord {
         const genericRecord: GenericRecord = {
@@ -17,4 +22,6 @@ export class Group {
         return (genericRecord);
 
     }
+
+
 }

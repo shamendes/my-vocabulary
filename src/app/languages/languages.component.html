@@ -1,4 +1,4 @@
 <ul>
-    <li *ngFor="let genericAction of genericActions" class="listCardButton listCardButton--vertical"><app-card-button [genericRecord]="genericAction"  [height]="80" [width]="400" (onAdd)="add($event)"></app-card-button></li>
-    <li *ngFor="let language of languages" class="listCardButton listCardButton--vertical"><app-card-button [genericRecord]="language.asGenericRecord()"  [height]="80" [width]="400" (onRemove)="remove($event)" (onUpdate)="update($event)"></app-card-button></li>
+    <li *ngFor="let genericAction of genericActions" class="listCardButton listCardButton--vertical"><app-card-button [genericRecord]="genericAction"  [height]="80" [width]="400" (eventAdd)="add($event)"></app-card-button></li>
+    <li *ngFor="let language of languages" class="listCardButton listCardButton--vertical"><app-card-button [genericRecord]="language.asGenericRecord()"  [height]="80" [width]="400" (eventRemove)="remove($event)" (eventUpdate)="update($event)" (eventSelect)="select($event)"></app-card-button></li>
 </ul>

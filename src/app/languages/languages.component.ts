@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import {LANGUAGES} from '../../mock/mock-languages';
 import { GenericRecord } from '../../class/generic-record';
 import { Language } from '../../class/language';
@@ -9,6 +9,8 @@ import { Language } from '../../class/language';
   styleUrls: ['./languages.component.css', '../app.component.css']
 })
 export class LanguagesComponent implements OnInit {
+
+  @Output() eventSelect = new EventEmitter<Language>();
 
   // MOC of Languages
   languages = LANGUAGES;
@@ -23,32 +25,39 @@ export class LanguagesComponent implements OnInit {
   ngOnInit() {
   }
 
-  add(genericRecord: GenericRecord){
-    let newLanguage: Language ={id: genericRecord.id, name: genericRecord.name, asGenericRecord(): GenericRecord {
-      const genericRecord: GenericRecord = {
-          id: this.id,
-          name: this.name,
-          action: ''
-      };
+  add(genericRecord: GenericRecord) {
+    const newLanguage = new Language;
 
-      return (genericRecord);
-      }
-    }
+    newLanguage.id = genericRecord.id;
+    newLanguage.name = genericRecord.name;
     this.languages.push(newLanguage);
   }
 
-  remove(genericRecord: GenericRecord){
-    for(let index = 0; index < this.languages.length; index++){
-      if(this.languages[index].id==genericRecord.id) 
-        this.languages.splice(index,1);
-    }   
+  remove(genericRecord: GenericRecord) {
+    let indexLanguageFound: number;
+
+    indexLanguageFound = this.languages.findIndex( findLanguage => findLanguage.id === genericRecord.id);
+    if (indexLanguageFound >= 0) {
+      this.languages.splice(indexLanguageFound, 1);
+    }
   }
 
-  update(genericRecord: GenericRecord){
-    for(let index = 0; index < this.languages.length; index++){
-      if(this.languages[index].id==genericRecord.id) 
-        this.languages[index].name = genericRecord.name;
-    }       
+  update(genericRecord: GenericRecord) {
+    let indexLanguageFound: number;
+
+    indexLanguageFound = this.languages.findIndex( findLanguage => findLanguage.id === genericRecord.id);
+    if (indexLanguageFound >= 0) {
+      this.languages[indexLanguageFound].name = genericRecord.name;
+    }
+  }
+
+  select(genericRecord: GenericRecord) {
+    let indexLanguageFound: number;
+
+    indexLanguageFound = this.languages.findIndex( findLanguage => findLanguage.id === genericRecord.id);
+    if (indexLanguageFound >= 0) {
+      this.eventSelect.emit(this.languages[indexLanguageFound]);
+    }
   }
 
 }

@@ -1,0 +1,11 @@
+.panel
+{
+    width: 100%;
+}
+
+.panel td
+{
+    border: 0px;
+    width: 50%;
+    vertical-align: top;
+}

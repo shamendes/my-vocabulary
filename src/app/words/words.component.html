@@ -1,0 +1,10 @@
+<table class="panel">
+    <tr>
+        <td>
+            <app-alphabetic-list [genericList]="genericRecords" (eventSelect)="select($event)"></app-alphabetic-list>
+        </td>
+        <td>
+            <app-word-detail [word]="selectedWord" (eventSave)="save($event)" (eventRemove)="remove($event)" ></app-word-detail>
+        </td>
+    </tr>
+</table>

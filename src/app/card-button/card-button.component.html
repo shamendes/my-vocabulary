@@ -7,13 +7,13 @@
             [style.line-height.px]="height" 
             [style.width.px]="width" 
             (click)="doAction()"
-            (mouseover)="keepFlagOnOver(true)"
-            (mouseleave)="keepFlagOnOver(false)">
+            (mouseover)="keepFlagOnOverButtonCard(true)"
+            (mouseleave)="keepFlagOnOverButtonCard(false)">
             <label *ngIf="!myInput && genericRecord.action ===''">                
                 {{genericRecord.name}}
             </label> 
-            <img [class.imgMoreActionsHidden]="!showMoreActions()" [class.imgMoreActionsShow]="showMoreActions()" src="assets/Delete.png" (click)="remove()"> 
-            <img [class.imgMoreActionsHidden]="!showMoreActions()" [class.imgMoreActionsShow]="showMoreActions()" src="assets/Edit.png" (click)="edit()">    
+            <img [class.imgMoreActionsHidden]="!showMoreActions()" [class.imgMoreActionsShow]="showMoreActions()" src="assets/Delete.png" (click)="remove()">
+            <img [class.imgMoreActionsHidden]="!showMoreActions()" [class.imgMoreActionsShow]="showMoreActions()" src="assets/Edit.png" (click)="edit()">
             <img *ngIf="!myInput && genericRecord.action ==='new'" src="assets/Add.png" width="50" height="50" style="vertical-align: middle" />
             <div *ngIf="myInput">
                 <input #inputCard [(ngModel)]="myInput.value"  type="text" class="textBox" (keyup)="onKeyUp($event)" > 

@@ -12,22 +12,25 @@ export class CardButtonComponent implements OnInit, AfterViewChecked  {
   @Input() genericRecord: GenericRecord;
   @Input() height: number;
   @Input() width: number;
-  @Output() onAdd = new EventEmitter<GenericRecord>();
-  @Output() onRemove = new EventEmitter<GenericRecord>();
-  @Output() onUpdate = new EventEmitter<GenericRecord>();
+  @Output() eventAdd = new EventEmitter<GenericRecord>();
+  @Output() eventRemove = new EventEmitter<GenericRecord>();
+  @Output() eventUpdate = new EventEmitter<GenericRecord>();
+  @Output() eventSelect = new EventEmitter<GenericRecord>();
   @ViewChild('inputCard') inputCard: ElementRef ;
 
   myInput;
-  flagCancelNew = false;
-  flagOnOver =false;
+  // Control for click in multiples objects and only do one action
+  firstAction = true;
+  flagOnOverButtonCard = false;
 
   constructor() { }
 
   ngOnInit() {
   }
-  ngAfterViewChecked(){
-    if(this.inputCard)
+  ngAfterViewChecked() {
+    if (this.inputCard) {
       this.inputCard.nativeElement.focus();
+    }
   }
 
 
@@ -37,82 +40,103 @@ export class CardButtonComponent implements OnInit, AfterViewChecked  {
 
   doAction(): void {
     switch (this.genericRecord.action) {
-      case '' : return;
+      case '' : this.doSelect();
+                break;
       case 'new': this.doNew();
                   break;
     }
+    this.firstAction = true;
   }
 
   private doNew(): void {
-    if(this.flagCancelNew)
-    {
-      this.flagCancelNew = false;
-      return;
+    if (this.executeAction()) {
+      if (!this.myInput) {
+        this.myInput = {value: ''};
+      }
     }
-
-    if (!this.myInput) {  
-      this.myInput = {value: ''};
-      this.teste();
-    } 
   }
+
+  private doSelect() {
+    if (this.executeAction() && !this.myInput) {
+      this.eventSelect.emit(this.genericRecord);
+    }
+  }
+
 
   cancelNew(): void {
-    this.myInput = null;
-    this.flagCancelNew = true;
-  }
-
-  saveNew(){
-      let newGenericRecord: GenericRecord = {id: -1, name: this.myInput.value, action: ''};
-      this.onAdd.emit(newGenericRecord);
+    if (this.executeAction()) {
       this.myInput = null;
+    }
   }
 
-  update(){
-    this.genericRecord.name = this.myInput.value;
-    this.onUpdate.emit(this.genericRecord);
-    this.myInput = null;
+  saveNew() {
+      if (this.executeAction()) {
+        const newGenericRecord: GenericRecord = {id: -1, name: this.myInput.value, action: ''};
+        this.eventAdd.emit(newGenericRecord);
+        this.myInput = null;
+      }
   }
 
-  remove(){
-    if( confirm("Remove item?"))
-     this.onRemove.emit(this.genericRecord);
+  update() {
+    if (this.executeAction()) {
+      this.genericRecord.name = this.myInput.value;
+      this.eventUpdate.emit(this.genericRecord);
+      this.myInput = null;
+    }
   }
 
-  edit(){
-    this.myInput = {value: this.genericRecord.name};
+  remove() {
+    if (this.executeAction()) {
+      if ( confirm('Remove item?')) {
+      this.eventRemove.emit(this.genericRecord);
+      }
+    }
   }
 
-  onKeyUp(event){
-    let keyCode = event.which || event.keyCode;
+  edit() {
+    if (this.executeAction()) {
+      this.myInput = {value: this.genericRecord.name};
+    }
+  }
 
-    switch(keyCode) {
-      case 27: //Tecla ESC
-        this.cancelNew();
+  onKeyUp(event) {
+    const keyCode = event.which || event.keyCode;
+
+    switch (keyCode) {
+      case 27: // Tecla ESC
+          this.cancelNew();
+          this.firstAction = true;
         break;
-      case 13: //Tecla ENTER
-        if(this.genericRecord.action == 'new')
-          this.saveNew();
-        else
-          this.update();
+      case 13: // Tecla ENTER
+        if (this.genericRecord.action === 'new') {
+            this.saveNew();
+            this.firstAction = true;
+        } else {
+            this.update();
+            this.firstAction = true;
+        }
         break;
       default:
         return;
     }
   }
 
-  keepFlagOnOver(value)
-  {
-    this.flagOnOver = value;
+  keepFlagOnOverButtonCard(value) {
+    this.flagOnOverButtonCard = value;
   }
 
-  showMoreActions()
-  {
-    return (this.flagOnOver && this.myInput == null && this.genericRecord.action=='');
+  showMoreActions() {
+    return (this.flagOnOverButtonCard && this.myInput == null && this.genericRecord.action === '');
   }
 
-  teste()
-  {
-
+  private executeAction(): boolean {
+    if (this.firstAction) {
+      this.firstAction = false;
+      return true;
+    } else {
+      this.firstAction = true;
+      return false;
+    }
   }
 
 
