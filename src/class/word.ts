@@ -11,7 +11,6 @@ export class Word {
         this.groups = [];
     }
 
-
     asGenericRecord(): GenericRecord {
         const genericRecord: GenericRecord = {
             id: this.id,
@@ -22,6 +21,5 @@ export class Word {
         return (genericRecord);
 
     }
-
 
 }

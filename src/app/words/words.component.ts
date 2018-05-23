@@ -1,6 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output, OnChanges } from '@angular/core';
 import { Group } from '../../class/group';
-import { GenericRecord } from '../../class/generic-record';
 import { Word } from '../../class/word';
 import { WordService} from '../_services/word.service';
 
@@ -9,11 +8,12 @@ import { WordService} from '../_services/word.service';
   templateUrl: './words.component.html',
   styleUrls: ['./words.component.css']
 })
-export class WordsComponent implements OnInit {
+export class WordsComponent implements OnInit, OnChanges {
 
   @Input() group: Group;
+  @Input() reload: boolean;
+  @Output() eventSelect = new EventEmitter<Word>();
 
-  genericRecords: GenericRecord[];
   words: Word[];
   selectedWord: Word;
 
@@ -22,16 +22,12 @@ export class WordsComponent implements OnInit {
 
   ngOnInit() {
     this.getWords();
-    if (!this.genericRecords) {
-      this.resyncGenericRecords();
-    }
   }
 
-  private resyncGenericRecords() {
-    this.genericRecords = [];
-    for (const word of this.words) {
-      this.genericRecords.push(word.asGenericRecord());
-   }
+  ngOnChanges() {
+    if (this.reload ) {
+      this.selectedWord = null;
+    }
   }
 
   getWords() {
@@ -39,13 +35,9 @@ export class WordsComponent implements OnInit {
   }
 
 
-  select(genericRecord: GenericRecord) {
-    let indexWordFound: number;
-
-    indexWordFound = this.words.findIndex(findWord => findWord.id === genericRecord.id);
-    if (indexWordFound >= 0) {
-      this.selectedWord = this.words[indexWordFound];
-    }
+  select(word: Word) {
+      this.selectedWord = word;
+      this.eventSelect.emit(this.selectedWord);
   }
 
   save(word: Word) {
@@ -65,7 +57,7 @@ export class WordsComponent implements OnInit {
         this.words[indexWordFound].meaning = word.meaning;
       }
     }
-    this.resyncGenericRecords();
+    this.selectedWord = null;
   }
 
   remove(word: Word) {
@@ -74,9 +66,8 @@ export class WordsComponent implements OnInit {
     indexWordFound = this.words.findIndex(findWord => findWord.id === word.id);
     if (indexWordFound >= 0) {
       this.words.splice(indexWordFound, 1);
-      this.resyncGenericRecords();
     }
-
+    this.select(null);
   }
 
 }

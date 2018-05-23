@@ -9,11 +9,13 @@ import { Word } from '../class/word';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+
   title = 'My Vocabulary';
 
   selectedLanguage: Language;
   selectedGroup: Group;
   selectedWord: Word;
+  reloadWordsComponent: boolean;
 
 
   selectLanguage(language: Language): void {
@@ -25,7 +27,23 @@ export class AppComponent {
   }
 
   selectWord(word: Word): void {
+    this.reloadWordsComponent = false;
     this.selectedWord = word;
   }
 
+  resetLanguage() {
+    this.selectedLanguage = null;
+    this.selectedGroup = null;
+    this.selectedWord = null;
+  }
+
+  resetGroup() {
+    this.selectedGroup = null;
+    this.selectedWord = null;
+  }
+
+  resetWord() {
+    this.reloadWordsComponent = true;
+    this.selectedWord = null;
+  }
 }

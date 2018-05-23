@@ -1,6 +1,6 @@
 <div>
-  <input placeholder="Word" [(ngModel)]="word.name"><br>
+  <input #inputWordName placeholder="Word" [(ngModel)]="word.name"><br>
   <textarea placeholder="Description" [(ngModel)]="word.meaning"></textarea>
-  <button (click)="save()">Save</button>
-  <button (click)="remove()">Delete</button>
+  <button *ngIf="!word.id" (click)="save()">Save</button>
+  <button *ngIf="word.id" (click)="remove()">Delete</button>
 </div>

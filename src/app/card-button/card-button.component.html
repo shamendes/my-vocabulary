@@ -1,23 +1,22 @@
+<div    *ngIf="genericRecord"
+        [class.cardButton]="true" 
+        [class.cardButton--content]="!isAction()" 
+        [class.cardButton--action]="isAction()"  
+        [style.line-height.px]="height" 
+        [style.width.px]="width" 
+        (click)="doAction()"
+        (mouseover)="keepFlagOnOverButtonCard(true)"
+        (mouseleave)="keepFlagOnOverButtonCard(false)">
 
-<div ng-app="appButtonCard" *ngIf="genericRecord">
-    <span ng-controller="ctrlButtonCard" 
-            [class.cardButton]="true" 
-            [class.cardButton--content]="!isAction()" 
-            [class.cardButton--action]="isAction()"  
-            [style.line-height.px]="height" 
-            [style.width.px]="width" 
-            (click)="doAction()"
-            (mouseover)="keepFlagOnOverButtonCard(true)"
-            (mouseleave)="keepFlagOnOverButtonCard(false)">
             <label *ngIf="!myInput && genericRecord.action ===''">                
                 {{genericRecord.name}}
             </label> 
             <img [class.imgMoreActionsHidden]="!showMoreActions()" [class.imgMoreActionsShow]="showMoreActions()" src="assets/Delete.png" (click)="remove()">
             <img [class.imgMoreActionsHidden]="!showMoreActions()" [class.imgMoreActionsShow]="showMoreActions()" src="assets/Edit.png" (click)="edit()">
-            <img *ngIf="!myInput && genericRecord.action ==='new'" src="assets/Add.png" width="50" height="50" style="vertical-align: middle" />
+            <img *ngIf="!myInput && genericRecord.action ==='new'" src="assets/Add.png" width="40" height="40" style="vertical-align: middle" />
             <div *ngIf="myInput">
                 <input #inputCard [(ngModel)]="myInput.value"  type="text" class="textBox" (keyup)="onKeyUp($event)" > 
                 <img src="assets/Cancel.png" (click)="cancelNew()" width="15" height="15" style="padding-left: 5px"/>
             </div>
-    </span>
+
 </div>

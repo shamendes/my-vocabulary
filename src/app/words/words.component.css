@@ -1,11 +1,10 @@
-.panel
+.wordContent
 {
     width: 100%;
 }
 
-.panel td
+.wordContent td
 {
     border: 0px;
-    width: 50%;
     vertical-align: top;
 }

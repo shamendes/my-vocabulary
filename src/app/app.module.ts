@@ -6,9 +6,9 @@ import { AppComponent } from './app.component';
 import { LanguagesComponent } from './languages/languages.component';
 import { CardButtonComponent } from './card-button/card-button.component';
 import { GroupsComponent } from './groups/groups.component';
-import { AlphabeticListComponent } from './alphabetic-list/alphabetic-list.component';
 import { WordsComponent } from './words/words.component';
 import { WordDetailComponent } from './word-detail/word-detail.component';
+import { WordsListComponent } from './words-list/words-list.component';
 
 @NgModule({
   declarations: [
@@ -16,9 +16,9 @@ import { WordDetailComponent } from './word-detail/word-detail.component';
     LanguagesComponent,
     CardButtonComponent,
     GroupsComponent,
-    AlphabeticListComponent,
     WordsComponent,
-    WordDetailComponent
+    WordDetailComponent,
+    WordsListComponent
   ],
   imports: [
     BrowserModule,

@@ -2,13 +2,11 @@ label{
     cursor: pointer;
 }
 .cardButton{
-    display: block;
     padding:10px;
     border: 1px solid black;
     border-radius: 5px;
     cursor: pointer;   
 }
-
 
 .cardButton--content{
     background-color: cornflowerblue;
@@ -66,3 +64,4 @@ label{
     padding-right: 5px;
     float:right;
 }
+
