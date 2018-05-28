@@ -10,8 +10,6 @@ import { element } from 'protractor';
 export class CardButtonComponent implements OnInit, AfterViewChecked  {
 
   @Input() genericRecord: GenericRecord;
-  @Input() height: number;
-  @Input() width: number;
   @Output() eventAdd = new EventEmitter<GenericRecord>();
   @Output() eventRemove = new EventEmitter<GenericRecord>();
   @Output() eventUpdate = new EventEmitter<GenericRecord>();
@@ -21,7 +19,6 @@ export class CardButtonComponent implements OnInit, AfterViewChecked  {
   myInput;
   // Control for click in multiples objects and only do one action
   firstAction = true;
-  flagOnOverButtonCard = false;
 
   constructor() { }
 
@@ -121,13 +118,6 @@ export class CardButtonComponent implements OnInit, AfterViewChecked  {
     }
   }
 
-  keepFlagOnOverButtonCard(value) {
-    this.flagOnOverButtonCard = value;
-  }
-
-  showMoreActions() {
-    return (this.flagOnOverButtonCard && this.myInput == null && this.genericRecord.action === '');
-  }
 
   private executeAction(): boolean {
     if (this.firstAction) {

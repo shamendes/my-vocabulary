@@ -1,11 +1,9 @@
-<div class="offset-md-4">
-  <ul>
-    <li *ngFor="let genericAction of genericActions" class="listCardButton listCardButton--horizontal">
-      <app-card-button [genericRecord]="genericAction" [height]="50" [width]="200" (eventAdd)="add($event)"></app-card-button>
-    </li>
-    <li *ngFor="let group of groups" class="listCardButton listCardButton--horizontal">
-      <app-card-button [genericRecord]="group.asGenericRecord()" [height]="50" [width]="200" (eventRemove)="remove($event)"
-        (eventUpdate)="update($event)" (eventSelect)="select($event)"></app-card-button>
-    </li>
-  </ul>
+<div class="flexContainerGroup">
+  <div *ngFor="let genericAction of genericActions" class="buttonGroup">
+    <app-card-button [genericRecord]="genericAction" (eventAdd)="add($event)"></app-card-button>
+  </div>
+  <div *ngFor="let group of groups" class="buttonGroup">
+    <app-card-button [genericRecord]="group.asGenericRecord()" (eventRemove)="remove($event)" (eventUpdate)="update($event)"
+      (eventSelect)="select($event)"></app-card-button>
+  </div>
 </div>

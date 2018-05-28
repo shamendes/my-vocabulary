@@ -5,7 +5,8 @@ label{
     padding:10px;
     border: 1px solid black;
     border-radius: 5px;
-    cursor: pointer;   
+    cursor: pointer;
+    position: relative;
 }
 
 .cardButton--content{
@@ -14,7 +15,6 @@ label{
     color: white;
     font-size: 15pt;  
     text-align: center;
-    padding-left: 30px;
  }
 
  .cardButton--content:hover{
@@ -23,25 +23,21 @@ label{
     color:white;
     font-size: 18pt;
     text-align: center; 
-    padding-left: 30px;
  }
 
  .cardButton--action{
     background-color:dodgerblue;
     text-align: center;
-    padding-left: 30px;
  }
 
  .cardButton--action:hover{
     background-color:royalblue;
     text-align: center;
-    padding-left: 30px;
  }
 
  .textBox
  {
     background: transparent;
-    width: 70%;
     border: none;
     border-bottom: 2px solid lightsteelblue;
     font-size: 18pt;
@@ -49,19 +45,18 @@ label{
     text-align: center;
  }
 
-
-.imgMoreActionsHidden{ 
-    visibility: hidden;
-    width: 18px;
-    height: 18px;
-    float:right;
-}
-
-.imgMoreActionsShow{
+.imgMoreActionsEdit{
+    position: absolute;
     visibility: visible;
     width: 18px;
     height: 18px;
-    padding-right: 5px;
-    float:right;
+    right: 25px;
 }
 
+.imgMoreActionsDelete{
+    position: absolute;
+    visibility: visible;
+    width: 18px;
+    height: 18px;
+    right: 5px;
+}
