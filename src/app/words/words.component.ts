@@ -10,6 +10,7 @@ import { WordService} from '../_services/word.service';
 })
 export class WordsComponent implements OnInit, OnChanges {
 
+  @Input() word: Word;
   @Input() group: Group;
   @Input() reload: boolean;
   @Output() eventSelect = new EventEmitter<Word>();
@@ -21,13 +22,17 @@ export class WordsComponent implements OnInit, OnChanges {
   }
 
   ngOnInit() {
+    this.selectedWord = this.word;
     this.getWords();
   }
 
   ngOnChanges() {
     if (this.reload ) {
       this.selectedWord = null;
+    } else if (this.word) {
+      this.selectedWord = this.word;
     }
+
   }
 
   getWords() {

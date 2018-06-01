@@ -1,2 +1,3 @@
+
 <app-words-list *ngIf="!selectedWord" [wordsList]="words" (eventSelect)="select($event)"></app-words-list>
 <app-word-detail *ngIf="selectedWord" [word]="selectedWord" (eventSave)="save($event)" (eventRemove)="remove($event)" ></app-word-detail>

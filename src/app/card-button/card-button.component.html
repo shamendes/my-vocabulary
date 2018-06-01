@@ -1,14 +1,15 @@
-<div *ngIf="genericRecord" [class.cardButton]="true" [class.cardButton--content]="!isAction()" [class.cardButton--action]="isAction()" (click)="doAction()">
+<div *ngIf="genericRecord" [class.cardButton]="true" [class.cardButton--content]="!isAction()" [class.cardButton--action]="isAction()"
+    (click)="doAction()">
 
-    <label *ngIf="!myInput && genericRecord.action ===''">
+    <label *ngIf="!myInput && genericRecord.action ===''" #labelCard class="labelName">
         {{genericRecord.name}}
     </label>
     <img *ngIf="!myInput && genericRecord.action ===''" class="imgMoreActionsDelete" src="assets/Delete.png" (click)="remove()">
     <img *ngIf="!myInput && genericRecord.action ===''" class="imgMoreActionsEdit" src="assets/Edit.png" (click)="edit()">
-    <img *ngIf="!myInput && genericRecord.action ==='new'" src="assets/Add.png" width="40" height="40" style="vertical-align: middle">
-    <div *ngIf="myInput">
-        <input #inputCard [(ngModel)]="myInput.value" type="text" class="textBox" (keyup)="onKeyUp($event)">
-        <img src="assets/Cancel.png" (click)="cancelNew()" width="15" height="15" style="padding-left: 5px" />
-    </div>
+    <img *ngIf="!myInput && genericRecord.action ==='new'" class="imgActionsAdd" src="assets/Add.png">
+
+    <input *ngIf="myInput" #inputCard [(ngModel)]="myInput.value" type="text" class="textBox" (keyup)="onKeyUp($event)">
+    <img *ngIf="myInput" src="assets/Cancel.png" (click)="cancelNew()" class="imgActionsCancelAdd" />
+
 
 </div>

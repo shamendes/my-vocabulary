@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Input, Output, AfterViewChecked, ViewChild, ElementRef} from '@angular/core';
+import { Component, EventEmitter, OnInit, Input, Output, AfterViewChecked, ViewChild, ElementRef } from '@angular/core';
 import {GenericRecord} from '../../class/generic-record';
 import { element } from 'protractor';
 
@@ -15,19 +15,25 @@ export class CardButtonComponent implements OnInit, AfterViewChecked  {
   @Output() eventUpdate = new EventEmitter<GenericRecord>();
   @Output() eventSelect = new EventEmitter<GenericRecord>();
   @ViewChild('inputCard') inputCard: ElementRef ;
+  @ViewChild('labelCard') labelCard: ElementRef ;
 
   myInput;
-  // Control for click in multiples objects and only do one action
+  // Control for click in multiples objects and only to do one action
   firstAction = true;
 
   constructor() { }
 
   ngOnInit() {
   }
+
+
   ngAfterViewChecked() {
     if (this.inputCard) {
       this.inputCard.nativeElement.focus();
     }
+
+    this.resizeFont(this.inputCard);
+    this.resizeFont(this.labelCard);
   }
 
 
@@ -126,6 +132,29 @@ export class CardButtonComponent implements OnInit, AfterViewChecked  {
     } else {
       this.firstAction = true;
       return false;
+    }
+  }
+
+  private resizeFont(obj: ElementRef ) {
+
+    if (!obj) {
+      return;
+    }
+
+    // Getting main DIV of buttonCard
+    const divButtonCard = obj.nativeElement.parentElement;
+    let fontSize = 8;
+
+    if (divButtonCard) {
+      const areaValue = divButtonCard.clientHeight * divButtonCard.clientWidth;
+
+      // Logic to increase font size according the size (W * H) of element
+      for ( let index = 5000; index < 50000; index = index + 5000) {
+        if (areaValue > index) {
+          fontSize = fontSize + 2;
+        }
+      }
+      obj.nativeElement.style.fontSize = fontSize + 'pt';
     }
   }
 

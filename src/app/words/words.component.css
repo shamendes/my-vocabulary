@@ -1,10 +1,3 @@
-.wordContent
-{
-    width: 100%;
-}
-
-.wordContent td
-{
-    border: 0px;
-    vertical-align: top;
-}
+:host{
+        width: 100%;
+    }

@@ -1,0 +1,30 @@
+:host{
+    width: 100%;
+}
+
+.tableResult{
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+    border-left: 1px solid gray;
+    border-right: 1px solid gray;
+}
+
+.tableResult tr td{
+    border-bottom: 1px solid gray;
+}
+
+.result{
+    font-style: italic;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.pathResult{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: midnightblue;
+    cursor: pointer;
+}
+
+.pathResult:hover{
+    text-decoration: underline;
+}

@@ -1,0 +1,11 @@
+<table class="tableResult">
+    <tr *ngFor="let result of searchResults">
+        <td>
+            <span class="result" [innerHtml]="giveResultText(result)"></span>
+            <br>
+            <span *ngIf="result.language" class="pathResult" (click)="select(result)">{{result.language.name}}</span>
+            <span *ngIf="result.group" class="pathResult" (click)="select(result)">{{result.group.language.name + ' > ' + result.group.name}}</span>
+            <span *ngIf="result.word" class="pathResult" (click)="select(result)">{{result.word.groups[0].language.name + ' > ' + result.word.groups[0].name + ' > ' + result.word.name}}</span>
+        </td>
+    </tr>
+</table>

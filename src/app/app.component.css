@@ -2,6 +2,17 @@
     display: flex;
     flex-wrap: wrap;
     margin: 0 auto;
+    justify-content: center;
+    width: 80%;
+}
+
+.flexContainerContent{
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 auto;
+    justify-content: center;
+    margin-top: 20px;
+    width: 80%;
 }
 
 .breadCrumb{
@@ -15,7 +26,12 @@
     margin-right: 10px;
     cursor: pointer;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: midnightblue;
     font-size: 10pt;
+}
+
+.breadCrumbItem:hover{
+    text-decoration: underline;
 }
 
 .breadCrumbSeparator{
@@ -29,7 +45,6 @@
 .tableTopBar{
     width: 100%;
     margin: 0px;
-    margin-bottom: 20px;
     padding: 0px;
     border-bottom: 1px solid rgb(77, 77, 77);
     border-left: 1px solid rgb(77, 77, 77);;

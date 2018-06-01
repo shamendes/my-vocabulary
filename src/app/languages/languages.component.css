@@ -2,19 +2,22 @@
     display: flex;
     flex-flow: column wrap;  
     margin: 0 auto;
+
 }
 
 .buttonLanguage{
     margin: 0 auto;
-    padding-bottom: 5px;
+    margin-bottom: 5px;
     width: 400px;
     height: 80px;
 }
+
 
 @media screen and (max-width:480px){
     .buttonLanguage{
         width: 200px;
         height: 50px;
+        margin-bottom: 15px;
     }
 }
 

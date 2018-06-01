@@ -4,23 +4,26 @@
       <td class="tableTopBarCol tableTopBarCol--content tableTopBarCol--content--breadCrumb">     
         <ul *ngIf="selectedLanguage" class="breadCrumb">
             <img class="breadCrumbSeparator" src="assets/Separator.png">
-            <li class="breadCrumbItem" (click)="resetLanguage()">{{selectedLanguage.name}}</li>
+            <li class="breadCrumbItem" (click)="resetLanguage()" title="Return to list of languages">{{selectedLanguage.name}}</li>
             <img *ngIf="selectedGroup" class="breadCrumbSeparator" src="assets/Separator.png">
-            <li *ngIf="selectedGroup" class="breadCrumbItem" (click)="resetGroup()">{{selectedGroup.name}}</li>
+            <li *ngIf="selectedGroup" class="breadCrumbItem" (click)="resetGroup()" title="Return to list of groups">{{selectedGroup.name}}</li>
             <img *ngIf="selectedWord" class="breadCrumbSeparator" src="assets/Separator.png">
-            <li *ngIf="selectedWord" class="breadCrumbItem" (click)="resetWord()">{{selectedWord.name}}</li>
+            <li *ngIf="selectedWord" class="breadCrumbItem" (click)="resetWord()" title="Return to list of expressions">{{selectedWord.name}}</li>
         </ul>
       </td>
       <td class="tableTopBarCol tableTopBarCol--content tableTopBarCol--content--search">
-          <input type="text" placeholder="Search">
-          <img class="searchButton" src="assets/Search.png">
+          <input type="text" placeholder="Search" [(ngModel)]="searchedText">
+          <img class="searchButton" src="assets/Search.png" (click)="search()">
       </td>
     </tr>
   </table>
+  <app-search-result *ngIf="goSearch" [searchedText]="searchedText" (eventSelect)="goSelectedResult($event)"></app-search-result> 
 </div>
+<div *ngIf="!goSearch" class="flexContainerContent">
   <app-languages *ngIf="!selectedLanguage" (eventSelect)="selectLanguage($event)"></app-languages>
   <app-groups *ngIf="selectedLanguage && !selectedGroup" [language]="selectedLanguage" (eventSelect)="selectGroup($event)"></app-groups>
-  <app-words *ngIf="selectedGroup" [group]="selectedGroup" [reload]="reloadWordsComponent" (eventSelect)="selectWord($event)"></app-words>
+  <app-words *ngIf="selectedGroup" [group]="selectedGroup" [word]="selectedWord" [reload]="reloadWordsComponent" (eventSelect)="selectWord($event)"></app-words>
 
+</div>
 
 

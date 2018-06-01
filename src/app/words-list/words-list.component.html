@@ -1,7 +1,11 @@
 <img class="addWord" src="assets/Add-Color.png" (click)="add()">
 
-<div *ngFor="let word of wordsList" (click)="select(word)" class="wordBox">
-  <label class="wordName" >{{word.name}}</label>
-  <br>
-  <label class="wordMeaning">{{word.meaning}}</label>
-</div>
+<table class="tableWords">
+  <tr *ngFor="let word of wordsList" (click)="select(word)">
+    <td>
+      <label class="wordName">{{word.name}}</label>
+      <br>
+      <label class="wordMeaning">{{word.meaning}}</label>
+    </td>
+  </tr>
+</table>

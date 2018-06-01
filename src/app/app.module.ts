@@ -9,6 +9,7 @@ import { GroupsComponent } from './groups/groups.component';
 import { WordsComponent } from './words/words.component';
 import { WordDetailComponent } from './word-detail/word-detail.component';
 import { WordsListComponent } from './words-list/words-list.component';
+import { SearchResultComponent } from './search-result/search-result.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { WordsListComponent } from './words-list/words-list.component';
     GroupsComponent,
     WordsComponent,
     WordDetailComponent,
-    WordsListComponent
+    WordsListComponent,
+    SearchResultComponent
   ],
   imports: [
     BrowserModule,

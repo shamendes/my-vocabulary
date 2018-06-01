@@ -1,19 +1,22 @@
-label{
+.labelName{
     cursor: pointer;
 }
 .cardButton{
+    display: flex;
     padding:10px;
     border: 1px solid black;
     border-radius: 5px;
     cursor: pointer;
     position: relative;
+    height: 70%;
+    align-items: center;
+    justify-content: center;
 }
 
 .cardButton--content{
     background-color: cornflowerblue;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: white;
-    font-size: 15pt;  
     text-align: center;
  }
 
@@ -21,7 +24,6 @@ label{
     background-color:royalblue;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color:white;
-    font-size: 18pt;
     text-align: center; 
  }
 
@@ -37,12 +39,38 @@ label{
 
  .textBox
  {
+    position: absolute;
+    left: 7%;
+    top: 25%;
+    width: 80%;
+    height: 50%;
+    box-sizing: border-box;
     background: transparent;
     border: none;
     border-bottom: 2px solid lightsteelblue;
-    font-size: 18pt;
     color: white;
     text-align: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+ }
+
+ .imgActionsCancelAdd{
+     width: 15px;
+     height: 15px;
+     position: absolute;
+     top: 40%;
+     right: 5%;
+ }
+
+
+ .imgActionsAdd{
+    width: 40px;
+    height: 40px;
+}
+ @media screen and (max-width:480px){
+    .imgActionsAdd{
+        width: 20px;
+        height: 20px;
+    } 
  }
 
 .imgMoreActionsEdit{
@@ -51,6 +79,7 @@ label{
     width: 18px;
     height: 18px;
     right: 25px;
+    top:10px;
 }
 
 .imgMoreActionsDelete{
@@ -59,4 +88,5 @@ label{
     width: 18px;
     height: 18px;
     right: 5px;
+    top:10px;
 }
